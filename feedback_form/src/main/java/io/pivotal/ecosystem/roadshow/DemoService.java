@@ -27,7 +27,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.io.IOException;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @Service
 public class DemoService
@@ -40,43 +46,30 @@ public class DemoService
 	private static final String SCORE = "score";
 	private static final String MAGNITUDE = "magnitude";
 
-	//can add Hystrix fallback method here, or can split into two methods
+
 	public DemoServiceResult build(String text)
 	{
-
-		//format user input into JSON
-		String userInput = "{\"request\":\"" + text + "\"}";
-
-
-		RestTemplate restTemplate = new RestTemplate();
-
-		//String jsonResult = restTemplate.postForObject(url, userInput, String.class);
-		String jsonResult = "{\"request\":\"I am really sad today\", \"sentiment\": {\"magnitude\": 0.4, \"score\": -0.4}}";
-		System.out.println("jsonResult = " + jsonResult);
+		String jsonResult = callPythonApp(url, text);
 
 		JSONObject json = new JSONObject(jsonResult);
+
+		System.out.println("json result:" + jsonResult);
 
 		JSONObject sentiment = json.getJSONObject(SENTIMENT);
 		double score = sentiment.getDouble(SCORE);
 		double magnitude = sentiment.getDouble(MAGNITUDE);
 
-//		System.out.println("sentiment = " + sentiment);
-//		System.out.println("score = " + score);
-//		System.out.println("magnitude = " + magnitude);
-
-
 		DemoServiceResult result = new DemoServiceResult();
 		result.setMagnitude(magnitude);
 		result.setScore(score);
 
-		//opportunity to refactor? By splitting up into seperate method? 
-
-		if ((score == -0.4) && (magnitude == 0.4)){
-			String negativeResponse = "I'm really sorry to hear you're upset today";
+		//opportunity to refactor? By splitting up into seperate method?
+		if ((score >= 0.5) && (magnitude >= 0.5)){
+			String negativeResponse = "Awesome! Thanks for the great feedback! Keep on rockin'!";
 			result.setResponse(negativeResponse);
 		}
-		else if((score == -0.8) && (magnitude == 0.4)){
-			String positiveResponse = "Yay! I'm so stoked you're stoked!";
+		else if((score <= -0.1) && (magnitude >= 0.5)){
+			String positiveResponse = "Oh dear, I'm so sorry to hear that. What can we do to make it up to you?";
 			result.setResponse(positiveResponse);
 		}
 		else {
@@ -86,6 +79,32 @@ public class DemoService
 
 		return result;
 	}
+
+	@HystrixCommand(fallbackMethod = "reliable")
+	public String callPythonApp(String url, String text){
+		RestTemplate restTemplate = new RestTemplate();
+		String userInput = "{\"request\":\"" + text + "\"}";
+		String jsonResult = restTemplate.postForObject(url, userInput, String.class);
+		return jsonResult;
+	}
+
+
+	public String reliable(String url, String text){
+		Resource resource = new ClassPathResource("/default_response.json");
+		String content = null;
+		try{
+			content = new String(Files.readAllBytes(Paths.get(resource.getURI())));
+			content = content.replaceAll("REPLACE ME", text + "some other text");
+
+		}
+		catch (IOException e){
+			System.err.println("error reading json file");
+			e.printStackTrace();
+		}
+		return content;
+	}
+
+
 
 }
 

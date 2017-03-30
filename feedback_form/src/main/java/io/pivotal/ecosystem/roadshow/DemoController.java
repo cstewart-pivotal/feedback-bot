@@ -23,6 +23,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
+
+
+
 
 @Controller
 public class DemoController
@@ -44,8 +48,8 @@ public class DemoController
 	@RequestMapping(value="/process", method=RequestMethod.POST)
 	public String processForm(@ModelAttribute("model") SentimentModel model)
 	{
-		//model.setResponse("hard coded");
 		DemoServiceResult result=service.build(model.getRequest());
+
 		model.setScore(Double.toString(result.getScore()));
 		model.setMagnitude(Double.toString(result.getMagnitude()));
 		model.setResponse(result.getResponse());
