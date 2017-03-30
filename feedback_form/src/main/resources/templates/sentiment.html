@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sentiment Analysis</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Response</h1>
+    <p th:text="'request: ' + ${model.request}" />
+    <p th:text="'SCORE: ' + ${model.score}" />
+    <p th:text="'MAGNITUDE: ' + ${model.magnitude}" />
+    <p th:text="'RESPONSE: ' + ${model.response}" />
+    <a href="/">Submit another request</a>
+</body>
+</html>
+

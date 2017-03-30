@@ -1,0 +1,11 @@
+---
+applications:
+- name: sentiment_analysis
+  memory: 128MB
+  disk_quota: 1G
+  buildpack: python_buildpack
+  command: python sentiment_analysis_template.py
+  host: sentiment.csbot
+  # host: ds_app_09
+  # services:
+  #     - google-ml

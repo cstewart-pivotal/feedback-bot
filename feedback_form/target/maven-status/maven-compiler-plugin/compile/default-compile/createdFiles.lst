@@ -1,0 +1,5 @@
+io/pivotal/ecosystem/roadshow/DemoService.class
+io/pivotal/ecosystem/roadshow/DemoWebAppApplication.class
+io/pivotal/ecosystem/roadshow/SentimentModel.class
+io/pivotal/ecosystem/roadshow/DemoController.class
+io/pivotal/ecosystem/roadshow/DemoServiceResult.class

@@ -1,0 +1,10 @@
+---
+applications:
+- name: feedback_form
+  memory: 128MB
+  disk_quota: 1G
+  instances: 1
+  host: feedback.csbot
+  # services: 
+  #     - service-registry
+  #     - circuit-breaker-dashboard
