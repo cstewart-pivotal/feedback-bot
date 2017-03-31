@@ -76,7 +76,7 @@ public class DemoService
 			String neutralResponse = "I don't know what to tell you... ";
 			result.setResponse(neutralResponse);
 		}
-
+        System.out.println("result:" + result);
 		return result;
 	}
 
@@ -94,7 +94,7 @@ public class DemoService
 		String content = null;
 		try{
 			content = new String(Files.readAllBytes(Paths.get(resource.getURI())));
-			content = content.replaceAll("REPLACE ME", text + "some other text");
+			content = content.replaceAll("REPLACE ME", text + " this was an error");
 
 		}
 		catch (IOException e){

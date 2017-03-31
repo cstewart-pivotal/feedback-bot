@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: io.pivotal.ecosystem.roadshow.DemoWebAppApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.159 sec - in io.pivotal.ecosystem.roadshow.DemoWebAppApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.333 sec - in io.pivotal.ecosystem.roadshow.DemoWebAppApplicationTests
