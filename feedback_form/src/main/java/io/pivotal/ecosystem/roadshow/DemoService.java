@@ -17,39 +17,31 @@
 
 package io.pivotal.ecosystem.roadshow;
 
-
-
-import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.client.RestTemplate;
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.io.IOException;
-
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 @Service
 public class DemoService
 {
-
 	@Value("${io.pivotal.ecosystem.roadshow}")
 	private String url;
+	
+	private SentimentService sentimentService;
 
 	private static final String SENTIMENT = "sentiment";
 	private static final String SCORE = "score";
 	private static final String MAGNITUDE = "magnitude";
 
+	public DemoService(SentimentService service)
+	{
+		this.sentimentService = service;
+	}
 
 	public DemoServiceResult build(String text)
 	{
-		String jsonResult = callPythonApp(url, text);
+		String jsonResult = sentimentService.callPythonApp(url, text);
+		// String jsonResult = callPythonApp(url, text);
 
 		JSONObject json = new JSONObject(jsonResult);
 
@@ -80,29 +72,28 @@ public class DemoService
 		return result;
 	}
 
-	@HystrixCommand(fallbackMethod = "reliable")
-	public String callPythonApp(String url, String text){
-		RestTemplate restTemplate = new RestTemplate();
-		String userInput = "{\"request\":\"" + text + "\"}";
-		String jsonResult = restTemplate.postForObject(url, userInput, String.class);
-		return jsonResult;
-	}
-
-
-	public String reliable(String url, String text){
-		Resource resource = new ClassPathResource("/default_response.json");
-		String content = null;
-		try{
-			content = new String(Files.readAllBytes(Paths.get(resource.getURI())));
-			content = content.replaceAll("REPLACE ME", text + " this was an error");
-
-		}
-		catch (IOException e){
-			System.err.println("error reading json file");
-			e.printStackTrace();
-		}
-		return content;
-	}
+//	public String callPythonApp(String url, String text){
+//		RestTemplate restTemplate = new RestTemplate();
+//		String userInput = "{\"request\":\"" + text + "\"}";
+//		String jsonResult = restTemplate.postForObject(url, userInput, String.class);
+//		return jsonResult;
+//	}
+//
+//
+//	public String reliable(String url, String text){
+//		Resource resource = new ClassPathResource("/default_response.json");
+//		String content = null;
+//		try{
+//			content = new String(Files.readAllBytes(Paths.get(resource.getURI())));
+//			content = content.replaceAll("REPLACE ME", text + " this was an error");
+//
+//		}
+//		catch (IOException e){
+//			System.err.println("error reading json file");
+//			e.printStackTrace();
+//		}
+//		return content;
+//	}
 
 	public String analyzeSentiment(double score, double magnitude)
 	{
