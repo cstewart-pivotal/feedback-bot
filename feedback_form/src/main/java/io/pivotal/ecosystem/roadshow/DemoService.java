@@ -104,6 +104,8 @@ public class DemoService
 		return content;
 	}
 
+	public String analyzeSentiment(double score, double magnitude)
+
 
 
 }
