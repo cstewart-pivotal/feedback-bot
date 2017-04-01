@@ -1,2 +1,4 @@
+/bin
+/target
 /feedback_form/ci/creds.yml
 .gitignore
