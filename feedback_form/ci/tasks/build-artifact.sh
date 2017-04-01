@@ -5,5 +5,5 @@ set -e
 # version=`cat version/number`
 cd git-repo/feedback_form
 mvn clean package
-echo 'done building'
+# echo 'done building'
 # cp build/libs/*.war ../artifact-dir/
