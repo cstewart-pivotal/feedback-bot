@@ -105,6 +105,9 @@ public class DemoService
 	}
 
 	public String analyzeSentiment(double score, double magnitude)
+	{
+		return "";
+	}
 
 
 
