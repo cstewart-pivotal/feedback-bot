@@ -1,0 +1,35 @@
+jobs:
+  - name: build-artifact
+    plan:
+    - get: git-repo
+      trigger: true
+    - task: build-artifact
+      file: git-repo/feedback_form/ci/tasks/build-artifact.yml
+      timeout: 5m
+
+  - name: deploy-app
+    plan:
+    - get: git-repo
+      passed: [build-artifact]
+    - put: deploy-app
+      params:
+        manifest: git-repo/feedback_form/manifest.yml
+        # path: final-dir/spring-music*.war
+
+
+resources:
+- name: git-repo
+  type: git
+  source:
+    uri: {{GIT_ROADSHOW_REPO}}
+    branch: {{GIT_BRANCH}}
+    private_key: {{GIT_PRIVATE_KEY}}
+
+- name: deploy-app
+  type: cf
+  source:
+    api: {{CF_API}}
+    username: {{CF_USER}}
+    password: {{CF_PASS}}
+    organization: {{CF_ORG}}
+    space: {{CF_SPACE}}
