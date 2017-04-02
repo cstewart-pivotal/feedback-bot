@@ -12,7 +12,7 @@ inputs:
   - name: git-repo
 
 outputs:
-  - name: artifact-dir
+  - name: build-output
 
 run:
-  path: git-repo/feedback_form/ci/tasks/build-artifact.sh
+  path: git-repo/feedback_form/ci/tasks/build.sh

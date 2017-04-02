@@ -1,7 +1,7 @@
-
 #!/bin/bash
 
 set -e -x
+
 
 pushd git-repo/feedback_form
   ./mvnw clean package

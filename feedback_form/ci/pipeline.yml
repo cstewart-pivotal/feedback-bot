@@ -1,11 +1,16 @@
+---
 jobs:
   - name: build-artifact
     plan:
     - get: git-repo
-      trigger: true
+      public: true
+      # trigger: true
     - task: build-artifact
       file: git-repo/feedback_form/ci/tasks/build-artifact.yml
-      timeout: 5m
+    - put: deploy-app
+      params:
+        manifest: git-repo/feedback_form/manifest.yml
+        path: git-repo/feedback_form/target/demo-web-app-0.0.1-SNAPSHOT.jar
 
   - name: deploy-app
     plan:
@@ -14,7 +19,7 @@ jobs:
     - put: deploy-app
       params:
         manifest: git-repo/feedback_form/manifest.yml
-        # path: build-output/demo-web-app-0.0.1-SNAPSHOT.jar
+        path: git-repo/feedback_form/target/demo-web-app-0.0.1-SNAPSHOT.jar
 
 
 resources:
