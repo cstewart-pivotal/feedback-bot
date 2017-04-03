@@ -1,14 +1,36 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Customer Service Bot</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
-<body>
-	<h1>Request</h1>
-    <form action="#" th:action="@{/process}" th:object="${model}" method="post">
-    	<p>Request: <input type="text" th:field="*{request}" /></p>
-    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-    </form>
-</body>
+    <head>
+        <title>Customer Service Bot</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+              th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
+              rel="stylesheet" media="screen" />
+
+        <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+                th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+
+        <link href="../static/css/feedback_bot.css"
+              th:href="@{css/feedback_bot.css}" rel="stylesheet" media="screen"/>
+    </head>
+    <body>
+
+
+    <div class="container">
+        <!--<div class="jumbotron">-->
+            <!--<img src="../static/images/background.png" width="1000"-->
+                 <!--th:src="@{images/background.png}"/>-->
+            <!--<h1>WHOOOOOO</h1>-->
+
+            <!--<h2>'Ellow Mate!!!</h2>-->
+        <!--</div>-->
+    </div>
+
+    <h1>Request</h1>
+        <form action="#" th:action="@{/process}" th:object="${model}" method="post">
+            <p>Request: <input type="text" th:field="*{request}" /></p>
+            <button class="btn-primary">Primary</button>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+        </form>
+    </body>
 </html>

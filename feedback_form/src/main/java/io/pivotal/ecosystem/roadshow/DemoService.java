@@ -46,7 +46,7 @@ public class DemoService
 
 		JSONObject json = new JSONObject(jsonResult);
 
-		int request = json.getInt(REQUEST);
+		String request = json.getString(REQUEST);
 		System.out.println("request:" + request);
 
 
@@ -58,7 +58,7 @@ public class DemoService
 		result.setMagnitude(magnitude);
 		result.setScore(score);
 
-		if ((request == 404) && (score == 0.0) && (magnitude == 0.0)){
+		if ((request.equals("Service Down")) && (score == 0.0) && (magnitude == 0.0)){
 			String fallbackResponse = "OUR SERVICE IS DOWN, THIS IS A DEFAULT RESPONSE. HOPE WE CAN STILL BE FRIENDS :)";
 			result.setResponse(fallbackResponse);
 		}
