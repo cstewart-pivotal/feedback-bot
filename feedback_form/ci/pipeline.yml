@@ -17,6 +17,7 @@ jobs:
       params:
         manifest: git-repo/feedback_form/manifest.yml
         path: git-repo/feedback_form/target/demo-web-app-0.0.1-SNAPSHOT.jar
+        CF_TRACE: true
 
 
 resources:
