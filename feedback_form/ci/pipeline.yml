@@ -13,6 +13,7 @@ jobs:
     plan:
     - get: git-repo
       passed: [build-artifact]
+      trigger: true
     - put: deploy-app
       params:
         manifest: git-repo/feedback_form/manifest.yml
