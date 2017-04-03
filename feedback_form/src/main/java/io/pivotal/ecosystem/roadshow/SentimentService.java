@@ -31,7 +31,7 @@ public class SentimentService {
 	}
 
 	public String skipPythonApp(String url, String text) {
-		System.out.println("skipPythonApp called");
+		System.out.println("skipPythonApp called, circuit breaker open");
 
 		Resource resource = new ClassPathResource("/default_response.json");
 		String content = null;

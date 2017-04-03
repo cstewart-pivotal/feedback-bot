@@ -32,6 +32,7 @@ public class DemoService
 	private static final String SENTIMENT = "sentiment";
 	private static final String SCORE = "score";
 	private static final String MAGNITUDE = "magnitude";
+	private static final String REQUEST = "request";
 
 	public DemoService(SentimentService service)
 	{
@@ -41,11 +42,13 @@ public class DemoService
 	public DemoServiceResult build(String text)
 	{
 		String jsonResult = sentimentService.callPythonApp(url, text);
-		// String jsonResult = callPythonApp(url, text);
+		System.out.println("json result:" + jsonResult);
 
 		JSONObject json = new JSONObject(jsonResult);
 
-		System.out.println("json result:" + jsonResult);
+		int request = json.getInt(REQUEST);
+		System.out.println("request:" + request);
+
 
 		JSONObject sentiment = json.getJSONObject(SENTIMENT);
 		double score = sentiment.getDouble(SCORE);
@@ -55,8 +58,11 @@ public class DemoService
 		result.setMagnitude(magnitude);
 		result.setScore(score);
 
-		//opportunity to refactor? By splitting up into seperate method?
-		if ((score >= 0.5) && (magnitude >= 0.5)){
+		if ((request == 404) && (score == 0.0) && (magnitude == 0.0)){
+			String fallbackResponse = "OUR SERVICE IS DOWN, THIS IS A DEFAULT RESPONSE. HOPE WE CAN STILL BE FRIENDS :)";
+			result.setResponse(fallbackResponse);
+		}
+		else if ((score >= 0.5) && (magnitude >= 0.5)){
 			String negativeResponse = "Awesome! Thanks for the great feedback! Keep on rockin'!";
 			result.setResponse(negativeResponse);
 		}
@@ -71,36 +77,5 @@ public class DemoService
         System.out.println("result:" + result);
 		return result;
 	}
-
-//	public String callPythonApp(String url, String text){
-//		RestTemplate restTemplate = new RestTemplate();
-//		String userInput = "{\"request\":\"" + text + "\"}";
-//		String jsonResult = restTemplate.postForObject(url, userInput, String.class);
-//		return jsonResult;
-//	}
-//
-//
-//	public String reliable(String url, String text){
-//		Resource resource = new ClassPathResource("/default_response.json");
-//		String content = null;
-//		try{
-//			content = new String(Files.readAllBytes(Paths.get(resource.getURI())));
-//			content = content.replaceAll("REPLACE ME", text + " this was an error");
-//
-//		}
-//		catch (IOException e){
-//			System.err.println("error reading json file");
-//			e.printStackTrace();
-//		}
-//		return content;
-//	}
-
-	public String analyzeSentiment(double score, double magnitude)
-	{
-		return "";
-	}
-
-
-
 }
 
