@@ -18,11 +18,11 @@
     <div class="container">
     </div>
 
-    <h1>Feedback Bot</h1>
+    <h1>Feedback Bot!!!</h1>
         <form action="#" th:action="@{/process}" th:object="${model}" method="post">
-            <p>Request: <input type="text" th:field="*{request}" /></p>
-            <button class="btn-primary">Primary</button>
-        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+            <p>Tell us what you think: <input type="text" th:field="*{request}" /></p>
+            <!--<button class="btn-primary">Primary</button>-->
+        <p><input type="submit" value="Submit" class="btn-primary"/> <input type="reset" value="Reset" /></p>
         </form>
     </body>
 </html>
