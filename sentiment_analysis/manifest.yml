@@ -5,6 +5,6 @@ applications:
   disk_quota: 1G
   buildpack: python_buildpack
   command: python sentiment_analysis_template.py
-  host: sentiment.csbot
+  host: sentiment
   services:
       - google-ml
