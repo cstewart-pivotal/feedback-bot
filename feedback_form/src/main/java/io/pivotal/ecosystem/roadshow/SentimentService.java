@@ -21,10 +21,7 @@ public class SentimentService {
 
 	@HystrixCommand(fallbackMethod = "skipPythonApp")
 	public String callPythonApp(String url, String text) {
-		System.out.println("url:" + url);
-		System.out.println("text:" + text);
 		String userInput = "{\"request\":\"" + text + "\"}";
-		System.out.println("userInput:" + userInput);
 		String jsonResult = restTemplate.postForObject(url, userInput, String.class);
 		System.out.println("jsonResult:" + jsonResult);
 		return jsonResult;
