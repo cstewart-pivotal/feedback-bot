@@ -43,9 +43,10 @@
     font-style: italic;
 }
 
-.response {
+.response p {
     font-weight: bold;
 }
+
 #sentiment_score{
     padding-top:30px;
     color: darkgrey;
