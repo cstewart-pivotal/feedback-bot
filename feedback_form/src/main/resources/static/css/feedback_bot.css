@@ -4,12 +4,17 @@
 
 .container{
     padding: 0 100px;
+    margin-top:5%;
 }
 
 
 .jumbotron {
     text-align: center;
     background: #e4f3f2;
+}
+
+.jumbotron .sentiment{
+    padding-bottom:0px;
 }
 
 .input-field {
@@ -19,7 +24,10 @@
 }
 
 .btn,
-.btn:visited{
+.btn:visited,
+.btn-info:active,
+.btn-info:focus,
+.btn-success:active:hover {
     background-color: #00ae9e;
     border: 1px solid #00ae9e;
     color:white;
@@ -37,4 +45,9 @@
 
 .request{
     font-style: italic;
+}
+
+#sentiment_score{
+    padding-top:30px;
+    color: darkgrey;
 }

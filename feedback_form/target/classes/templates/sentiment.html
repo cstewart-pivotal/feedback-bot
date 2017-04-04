@@ -16,15 +16,20 @@
     <body>
         <div class="container">
             <div class="jumbotron">
-            <p th:text="'request: ' + ${model.request}" />
-            <p th:text="'RESPONSE: ' + ${model.response}" />
-
-            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#sentiment_score">Show sentiment analysis</button>
-            <div id="sentiment_score" class="collapse in">
-                <p th:text="'SCORE: ' + ${model.score}" />
-                <p th:text="'MAGNITUDE: ' + ${model.magnitude}" />
-            </div>
-            <a href="/" class="btn btn-lg btn-success">Submit another request</a>
+                <div class="sentiment">
+                    <div class="request">
+                        <p th:text="${model.request}" />
+                    </div>
+                    <div class="response">
+                        <p th:text="${model.response}" />
+                    </div>
+                    <a href="/" class="btn btn-lg btn-success">Submit another request</a>
+                    <div id="sentiment_score">
+                        <p>Response sent back from Natural Language API</p>
+                        <span th:text="'SCORE: ' + ${model.score}" />
+                        <span th:text="'MAGNITUDE: ' + ${model.magnitude}" />
+                    </div>
+                </div>
             </div>
         </div>
     </body>

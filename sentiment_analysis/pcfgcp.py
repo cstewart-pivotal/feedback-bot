@@ -4,8 +4,6 @@ from operator import itemgetter
 import base64
 
 from google.cloud import language
-#from google.cloud import vision
-#from google.cloud.vision.image import Image
 from google.oauth2.service_account import Credentials
 
 """Base class for accessing Google Cloud Platform services from Python apps
@@ -95,12 +93,7 @@ class PcfGcp:
     return self.clients['language']
 
   """Ref. https://cloud.google.com/vision/docs/reference/libraries#client-libraries-install-python"""
-  # def getVision(self):
-  #   if self.clients['vision'] is None:
-  #     self.clients['vision'] = vision.Client(project=self.projectId,
-  #       credentials=self.get_google_cloud_credentials('google-ml-apis'))
-  #   return self.clients['vision']
-
+  
   def getStorage(self):
     pass
 

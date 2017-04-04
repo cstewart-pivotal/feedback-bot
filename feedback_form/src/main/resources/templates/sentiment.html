@@ -1,16 +1,37 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Sentiment Analysis</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
-<body>
-	<h1>Response</h1>
-    <p th:text="'request: ' + ${model.request}" />
-    <p th:text="'SCORE: ' + ${model.score}" />
-    <p th:text="'MAGNITUDE: ' + ${model.magnitude}" />
-    <p th:text="'RESPONSE: ' + ${model.response}" />
-    <a href="/">Submit another request</a>
-</body>
+    <head>
+        <title>Feedback Bot</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7/css/bootstrap.min.css"
+              th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
+              rel="stylesheet" media="screen" />
+        <script src="http://cdn.jsdelivr.net/webjars/jquery/3.2.0/jquery.min.js"
+                th:src="@{/webjars/jquery/3.2.0/jquery.min.js}"></script>
+        <link href="../static/css/normalize.css"
+              th:href="@{css/normalize.css}" rel="stylesheet" media="screen"/>
+        <link href="../static/css/feedback_bot.css"
+              th:href="@{css/feedback_bot.css}" rel="stylesheet" media="screen"/>
+    </head>
+    <body>
+        <div class="container">
+            <div class="jumbotron">
+                <div class="sentiment">
+                    <div class="request">
+                        <p th:text="${model.request}" />
+                    </div>
+                    <div class="response">
+                        <p th:text="${model.response}" />
+                    </div>
+                    <a href="/" class="btn btn-lg btn-success">Submit another request</a>
+                    <div id="sentiment_score">
+                        <p>Response sent back from Natural Language API</p>
+                        <span th:text="'SCORE: ' + ${model.score}" />
+                        <span th:text="'MAGNITUDE: ' + ${model.magnitude}" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
 
