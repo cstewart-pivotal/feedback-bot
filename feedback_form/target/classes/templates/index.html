@@ -1,36 +1,31 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Customer Service Bot</title>
+        <title>Feedback Bot</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
-              th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
+        <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7/css/bootstrap.min.css"
+              th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
               rel="stylesheet" media="screen" />
-
-        <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
-                th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
-
+        <script src="http://cdn.jsdelivr.net/webjars/jquery/3.2.0/jquery.min.js"
+                th:src="@{/webjars/jquery/3.2.0/jquery.min.js}"></script>
+        <link href="../static/css/normalize.css"
+              th:href="@{css/normalize.css}" rel="stylesheet" media="screen"/>
         <link href="../static/css/feedback_bot.css"
               th:href="@{css/feedback_bot.css}" rel="stylesheet" media="screen"/>
     </head>
     <body>
-
-
-    <div class="container">
-        <!--<div class="jumbotron">-->
-            <!--<img src="../static/images/background.png" width="1000"-->
-                 <!--th:src="@{images/background.png}"/>-->
-            <!--<h1>WHOOOOOO</h1>-->
-
-            <!--<h2>'Ellow Mate!!!</h2>-->
-        <!--</div>-->
-    </div>
-
-    <h1>Request</h1>
-        <form action="#" th:action="@{/process}" th:object="${model}" method="post">
-            <p>Request: <input type="text" th:field="*{request}" /></p>
-            <button class="btn-primary">Primary</button>
-        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-        </form>
+        <div class="container">
+            <div class="jumbotron">
+                    <h1>Hey there!</h1> <span style="font-size:21px;">Thanks for being an awesome customer!</span>
+                    <p> We'd always love to hear from you.</p>
+                    <p>Drop us a line!</p>
+                <form action="#" th:action="@{/process}" th:object="${model}" method="post">
+                    <p>
+                        <textarea class="input-field" th:field="*{request}"></textarea>
+                    </p>
+                    <p><input type="submit" value="Submit" class="btn btn-lg btn-success"/></p>
+                </form>
+            </div>
+        </div>
     </body>
 </html>

@@ -1,3 +1,40 @@
-body {
-    background-image: url("../images/background.png");
+/*body {*/
+    /*background-image: url("../images/background.png");*/
+/*}*/
+
+.container{
+    padding: 0 100px;
+}
+
+
+.jumbotron {
+    text-align: center;
+    background: #e4f3f2;
+}
+
+.input-field {
+    height:150px;
+    width: 400px;
+    font-size:14pt;
+}
+
+.btn,
+.btn:visited{
+    background-color: #00ae9e;
+    border: 1px solid #00ae9e;
+    color:white;
+    -webkit-border-radius: 0;
+    -moz-border-radius:0;
+    border-radius:0;
+    padding: 19px 37px;
+    font-size: 18px;
+}
+
+.btn:hover{
+    background-color: #00cec2;
+    border: 1px solid #00cec2;
+}
+
+.request{
+    font-style: italic;
 }
