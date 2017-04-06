@@ -42,13 +42,10 @@ public class DemoService
 	public DemoServiceResult build(String text)
 	{
 		String jsonResult = sentimentService.callPythonApp(url, text);
-		//System.out.println("json result:" + jsonResult);
 
 		JSONObject json = new JSONObject(jsonResult);
 
 		String request = json.getString(REQUEST);
-//		System.out.println("request:" + request);
-//
 
 		JSONObject sentiment = json.getJSONObject(SENTIMENT);
 		double score = sentiment.getDouble(SCORE);
