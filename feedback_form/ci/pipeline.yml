@@ -12,16 +12,6 @@ jobs:
         manifest: git-repo/feedback_form/manifest.yml
         path: build-output/demo-web-app-0.0.1-SNAPSHOT.jar
 
-
-  # - name: deploy-app
-  #   plan:
-  #   - get: git-repo
-  #     passed: [build-artifact]
-  #     trigger: true
-  #
-  #       CF_TRACE: true
-
-
 resources:
 - name: git-repo
   type: git
