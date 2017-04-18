@@ -60,12 +60,12 @@ public class DemoService
 			result.setResponse(fallbackResponse);
 		}
 		else if ((score >= 0.5) && (magnitude >= 0.5)){
-			String negativeResponse = "Awesome! Thanks for the great feedback! Keep on rockin'!";
-			result.setResponse(negativeResponse);
+			String positiveResponse = "Awesome! Thanks for the great feedback! Keep on rockin'!";
+			result.setResponse(positiveResponse);
 		}
 		else if((score <= -0.1) && (magnitude >= 0.3)){
-			String positiveResponse = "Oh dear, I'm so sorry to hear that. What can we do to make it up to you?";
-			result.setResponse(positiveResponse);
+			String negativeResponse = "Oh dear, I'm so sorry to hear that. What can we do to make it up to you?";
+			result.setResponse(negativeResponse);
 		}
 		else {
 			String neutralResponse = "I don't know what to tell you... ";
