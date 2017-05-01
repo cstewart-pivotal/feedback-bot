@@ -1,6 +1,6 @@
 /bin
 /target
-/feedback_form/ci/creds.yml
+/feedback-service/ci/creds.yml
 
 # Created by https://www.gitignore.io/api/java,maven,python,intellij,intellij+iml
 
