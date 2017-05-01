@@ -1,6 +1,6 @@
 ---
 jobs:
-  - name: build-artifact
+  - name: deploy-feedback-bot
     plan:
     - get: git-repo
       public: true
