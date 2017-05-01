@@ -1,6 +1,6 @@
 ---
 applications:
-- name: sentiment_analysis
+- name: sentiment-analysis
   memory: 128MB
   disk_quota: 1G
   buildpack: python_buildpack

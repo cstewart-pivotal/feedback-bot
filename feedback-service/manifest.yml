@@ -1,6 +1,6 @@
 ---
 applications:
-- name: feedback_form
+- name: feedback-form
   instances: 1
   host: feedback
   path: ./target/feedback-service-0.0.1-SNAPSHOT.jar
