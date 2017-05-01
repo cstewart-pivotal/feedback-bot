@@ -10,7 +10,7 @@ jobs:
     - put: deploy-app
       params:
         manifest: git-repo/feedback-service/manifest.yml
-        path: build-output/demo-web-app-0.0.1-SNAPSHOT.jar
+        path: build-output/feedback-service-0.0.1-SNAPSHOT.jar
 
 resources:
 - name: git-repo
