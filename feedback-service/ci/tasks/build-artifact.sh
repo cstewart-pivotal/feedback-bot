@@ -7,4 +7,4 @@ pushd git-repo
   ./mvnw clean package
 popd
 
-cp git-repo/target/demo-web-app-0.0.1-SNAPSHOT.jar   build-output/.
+cp git-repo/feedback-service/target/demo-web-app-0.0.1-SNAPSHOT.jar   build-output/.
