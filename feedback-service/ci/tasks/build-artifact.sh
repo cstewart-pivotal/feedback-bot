@@ -3,7 +3,7 @@
 set -e -x
 
 
-pushd git-repo
+pushd git-repo/feedback-service
   ./mvnw clean package
 popd
 
