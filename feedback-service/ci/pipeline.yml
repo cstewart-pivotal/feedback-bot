@@ -6,10 +6,10 @@ jobs:
       public: true
       trigger: true
     - task: build-artifact
-      file: git-repo/feedback_form/ci/tasks/build-artifact.yml
+      file: git-repo/feedback-form/ci/tasks/build-artifact.yml
     - put: deploy-app
       params:
-        manifest: git-repo/feedback_form/manifest.yml
+        manifest: git-repo/feedback-form/manifest.yml
         path: build-output/demo-web-app-0.0.1-SNAPSHOT.jar
 
 resources:
