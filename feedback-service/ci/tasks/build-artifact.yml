@@ -15,4 +15,4 @@ outputs:
   - name: build-output
 
 run:
-  path: git-repo/feedback_form/ci/tasks/build-artifact.sh
+  path: git-repo/feedback-service/ci/tasks/build-artifact.sh
