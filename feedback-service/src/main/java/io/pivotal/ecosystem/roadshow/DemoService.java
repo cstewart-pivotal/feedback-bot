@@ -55,12 +55,7 @@ public class DemoService
 		result.setMagnitude(magnitude);
 		result.setScore(score);
 
-		//take this out, just don't forget to change else if to if and back again
-		if ((request.equals("Service Down")) && (score == 0.0) && (magnitude == 0.0)){
-			String fallbackResponse = "OUR SERVICE IS DOWN, THIS IS A DEFAULT RESPONSE. HOPE WE CAN STILL BE FRIENDS :)";
-			result.setResponse(fallbackResponse);
-		}
-		else if ((score >= 0.1) && (magnitude >= 0.5)){
+		if ((score >= 0.1) && (magnitude >= 0.5)){
 			String positiveResponse = "Awesome! Thanks for the great feedback! Keep on rockin'!";
 			result.setResponse(positiveResponse);
 		}
