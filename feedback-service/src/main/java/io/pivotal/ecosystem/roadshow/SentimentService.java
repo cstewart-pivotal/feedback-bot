@@ -30,7 +30,7 @@ public class SentimentService {
 	public String skipPythonApp(String url, String text) {
 		System.out.println("skipPythonApp called, circuit breaker open");
 
-		Resource resource = new ClassPathResource("/default_response.json");
+		Resource resource = new ClassPathResource("/fallback_response.json");
 		String content = null;
 		try {
 			content = new String(Files.readAllBytes(Paths.get(resource.getURI())));

@@ -59,11 +59,11 @@ public class DemoService
 			String fallbackResponse = "OUR SERVICE IS DOWN, THIS IS A DEFAULT RESPONSE. HOPE WE CAN STILL BE FRIENDS :)";
 			result.setResponse(fallbackResponse);
 		}
-		else if ((score >= 0.5) && (magnitude >= 0.5)){
+		else if ((score >= 0.1) && (magnitude >= 0.5)){
 			String positiveResponse = "Awesome! Thanks for the great feedback! Keep on rockin'!";
 			result.setResponse(positiveResponse);
 		}
-		else if((score <= -0.1) && (magnitude >= 0.3)){
+		else if((score <= -0.1) && (magnitude >= 0.5)){
 			String negativeResponse = "Oh dear, I'm so sorry to hear that. What can we do to make it up to you?";
 			result.setResponse(negativeResponse);
 		}
