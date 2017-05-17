@@ -3,5 +3,5 @@ applications:
 - name: feedback-form
   instances: 1
   host: feedback
-  services:
-    - circuit-breaker-dashboard
+#  services:
+#    - circuit-breaker-dashboard
