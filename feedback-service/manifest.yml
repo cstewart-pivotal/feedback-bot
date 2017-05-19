@@ -3,5 +3,6 @@ applications:
 - name: feedback-form
   instances: 1
   host: feedback
-#  services:
-#    - circuit-breaker-dashboard
+  #path: target/feedback-service-0.0.1-SNAPSHOT.jar
+  services:
+    - circuit-breaker-dashboard
