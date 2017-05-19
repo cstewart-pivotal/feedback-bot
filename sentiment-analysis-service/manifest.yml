@@ -6,3 +6,4 @@ applications:
   buildpack: python_buildpack
   command: python sentiment_analysis_template.py
   host: sentiment
+  instances: 2
