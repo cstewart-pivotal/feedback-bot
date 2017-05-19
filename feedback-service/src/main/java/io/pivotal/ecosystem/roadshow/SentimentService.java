@@ -19,29 +19,11 @@ public class SentimentService {
 		this.restTemplate = rest;
 	}
 
-	@HystrixCommand(fallbackMethod = "skipPythonApp")
 	public String callPythonApp(String url, String text) {
 		String userInput = "{\"request\":\"" + text + "\"}";
 		String jsonResult = restTemplate.postForObject(url, userInput, String.class);
 		System.out.println("jsonResult:" + jsonResult);
 		return jsonResult;
-	}
-
-	public String skipPythonApp(String url, String text) {
-		System.out.println("skipPythonApp called, circuit breaker open");
-
-		//Define a new resource which is going to be a json file
-		Resource resource = new ClassPathResource("/fallback_response.json");
-		String content = null;
-		try {
-			//read the contents of the file and assign that to a variable which is the variable we're going to return
-			content = new String(Files.readAllBytes(Paths.get(resource.getURI())));
-		}
-		catch (IOException e){
-			System.err.println("error reading json file");
-			e.printStackTrace();
-		}
-		return content;
 	}
 }
 
@@ -74,20 +56,17 @@ public class SentimentService {
 
 
 
+//	public String skipPythonApp(String url, String text) {
+//		System.out.println("skipPythonApp called, circuit breaker open");
 //
-//public String skipPythonApp(String url, String text) {
-//	System.out.println("skipPythonApp called, circuit breaker open");
-//
-//	//Define a new resource which is going to be a json file
-//	Resource resource = new ClassPathResource("/fallback_response.json");
-//	String content = null;
-//	try {
-//		//read the contents of the file and assign that to a variable which is the variable we're going to return
-//		content = new String(Files.readAllBytes(Paths.get(resource.getURI())));
+//		Resource resource = new ClassPathResource("/fallback_response.json");
+//		String content = null;
+//		try {
+//			content = new String(Files.readAllBytes(Paths.get(resource.getURI())));
+//		}
+//		catch (IOException e){
+//			System.err.println("error reading json file");
+//			e.printStackTrace();
+//		}
+//		return content;
 //	}
-//	catch (IOException e){
-//		System.err.println("error reading json file");
-//		e.printStackTrace();
-//	}
-//	return content;
-//}
