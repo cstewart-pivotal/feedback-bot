@@ -55,7 +55,7 @@ public class DemoService
 		result.setMagnitude(magnitude);
 		result.setScore(score);
 
-	 if ((score > 0) && (magnitude >= 0.5)){
+	 	if ((score > 0) && (magnitude >= 0.5)){
 			String positiveResponse = "Awesome! Thanks for the great feedback! Keep on rockin'!";
 			result.setResponse(positiveResponse);
 		}
