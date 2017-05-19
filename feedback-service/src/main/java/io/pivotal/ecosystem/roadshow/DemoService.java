@@ -67,6 +67,7 @@ public class DemoService
 			String neutralResponse = "I don't know what to tell you... ";
 			result.setResponse(neutralResponse);
 		}
+
         System.out.println("result:" + result);
 		return result;
 	}
