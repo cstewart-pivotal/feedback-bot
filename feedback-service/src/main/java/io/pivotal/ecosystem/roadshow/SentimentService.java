@@ -5,8 +5,7 @@ package io.pivotal.ecosystem.roadshow;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
@@ -26,7 +25,7 @@ public class SentimentService {
 	public String callPythonApp(String url, String text) {
 		String userInput = "{\"request\":\"" + text + "\"}";
 		String jsonResult = restTemplate.postForObject(url, userInput, String.class);
-		LOG.debug("jsonResult:" + jsonResult);
+		System.out.println("jsonResult:" + jsonResult);
 		return jsonResult;
 	}
 

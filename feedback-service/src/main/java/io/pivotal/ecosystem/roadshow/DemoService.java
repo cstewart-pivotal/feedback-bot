@@ -17,8 +17,6 @@
 
 package io.pivotal.ecosystem.roadshow;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -75,7 +73,6 @@ public class DemoService
 			result.setResponse(neutralResponse);
 		}
 
-		LOG.debug("result:" + result);
 		return result;
 	}
 }
