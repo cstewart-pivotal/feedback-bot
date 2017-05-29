@@ -55,12 +55,12 @@ public class DemoService
 		result.setMagnitude(magnitude);
 		result.setScore(score);
 
-//	 	if((request.equals("Service Down")) && (score == 0.0) && (magnitude == 0.0)){
-//			String fallbackResponse = "We appreciate your feedback";
-//			result.setResponse(fallbackResponse);
-//
-//		}
-		if ((score > 0) && (magnitude >= 0.5)){
+	 	if((request.equals("Service Down")) && (score == 0.0) && (magnitude == 0.0)){
+			String fallbackResponse = "We appreciate your feedback";
+			result.setResponse(fallbackResponse);
+
+		}
+		else if ((score > 0) && (magnitude >= 0.5)){
 			String positiveResponse = "Awesome! Thanks for the great feedback! Keep on rockin'!";
 			result.setResponse(positiveResponse);
 		}
