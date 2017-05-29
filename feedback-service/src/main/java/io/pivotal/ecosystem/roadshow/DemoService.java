@@ -17,6 +17,8 @@
 
 package io.pivotal.ecosystem.roadshow;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -55,12 +57,12 @@ public class DemoService
 		result.setMagnitude(magnitude);
 		result.setScore(score);
 
-	 	if((request.equals("Service Down")) && (score == 0.0) && (magnitude == 0.0)){
-			String fallbackResponse = "We appreciate your feedback";
-			result.setResponse(fallbackResponse);
-
-		}
-		else if ((score > 0) && (magnitude >= 0.5)){
+//	 	if((request.equals("Service Down")) && (score == 0.0) && (magnitude == 0.0)){
+//			String fallbackResponse = "We appreciate your feedback";
+//			result.setResponse(fallbackResponse);
+//
+//		}
+		if ((score > 0) && (magnitude >= 0.5)){
 			String positiveResponse = "Awesome! Thanks for the great feedback! Keep on rockin'!";
 			result.setResponse(positiveResponse);
 		}
@@ -73,7 +75,7 @@ public class DemoService
 			result.setResponse(neutralResponse);
 		}
 
-        System.out.println("result:" + result);
+		LOG.debug("result:" + result);
 		return result;
 	}
 }
