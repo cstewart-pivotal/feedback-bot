@@ -48,7 +48,7 @@ public class DemoController
 	@RequestMapping(value="/process", method=RequestMethod.POST)
 	public String processForm(@ModelAttribute("model") SentimentModel model)
 	{
-		DemoServiceResult result=service.build(model.getRequest());
+		DemoServiceResult result = service.build(model.getRequest());
 
 		model.setScore(Double.toString(result.getScore()));
 		model.setMagnitude(Double.toString(result.getMagnitude()));
