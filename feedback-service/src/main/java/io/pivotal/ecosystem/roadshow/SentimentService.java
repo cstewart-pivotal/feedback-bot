@@ -30,7 +30,7 @@ public class SentimentService {
 	}
 
 	public String skipPythonApp(String url, String text) {
-
+		System.out.println("skipPythonApp method called");
 		Resource resource = new ClassPathResource("/fallback_response.json");
 		String content = null;
 		try {
