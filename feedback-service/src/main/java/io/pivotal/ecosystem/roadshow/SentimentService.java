@@ -25,22 +25,8 @@ public class SentimentService {
 	public String callPythonApp(String url, String text) {
 		String userInput = "{\"request\":\"" + text + "\"}";
 		String jsonResult = restTemplate.postForObject(url, userInput, String.class);
-		System.out.println("jsonResult:" + jsonResult);
-		return jsonResult;
-	}
-	public String skipPythonApp(String url, String text) {
-		System.out.println("skipPythonApp method called");
-		Resource resource = new ClassPathResource("/fallback_response.json");
-		String content = null;
-		try {
-			content = new String(Files.readAllBytes(Paths.get(resource.getURI())));
-		}
-		catch (IOException e){
-			System.err.println("error reading json file");
-			e.printStackTrace();
-		}
-		return content;
 
+		return jsonResult;
 	}
 }
 
@@ -76,3 +62,17 @@ public class SentimentService {
 
 
 
+//	public String skipPythonApp(String url, String text) {
+//		System.out.println("skipPythonApp method called");
+//		Resource resource = new ClassPathResource("/fallback_response.json");
+//		String content = null;
+//		try {
+//			content = new String(Files.readAllBytes(Paths.get(resource.getURI())));
+//		}
+//		catch (IOException e){
+//			System.err.println("error reading json file");
+//			e.printStackTrace();
+//		}
+//		return content;
+//
+//	}
