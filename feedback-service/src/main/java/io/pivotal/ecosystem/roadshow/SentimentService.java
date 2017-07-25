@@ -20,7 +20,7 @@ public class SentimentService {
 	public SentimentService(RestTemplate rest) {
 		this.restTemplate = rest;
 	}
-	
+
 	public String callPythonApp(String url, String text) {
 		String userInput = "{\"request\":\"" + text + "\"}";
 		String jsonResult = restTemplate.postForObject(url, userInput, String.class);
