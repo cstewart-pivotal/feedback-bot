@@ -60,7 +60,7 @@ public class DemoService
 			result.setResponse(fallbackResponse);
 		}
 
-		if((score > 0) && (magnitude >= 0.5)){
+		else if((score > 0) && (magnitude >= 0.5)){
 			String positiveResponse = "Awesome! Thanks for the great feedback! Keep on rockin'!";
 			result.setResponse(positiveResponse);
 		}
