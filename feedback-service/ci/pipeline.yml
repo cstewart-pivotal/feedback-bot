@@ -17,7 +17,7 @@ resources:
   type: git
   source:
     uri: {{GIT_REPO}}
-    branch: {{GIT_BRANCH}}
+    branch: finished_product
     private_key: {{GIT_PRIVATE_KEY}}
 
 - name: deploy-app
