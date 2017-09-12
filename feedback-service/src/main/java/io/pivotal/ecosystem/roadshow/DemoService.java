@@ -56,7 +56,7 @@ public class DemoService
 		result.setScore(score);
 
 		if((request.equals("Service Down")) && (score == 0.0) && (magnitude == 0.0)){
-			String fallbackResponse = "Thank you for the feedback";
+			String fallbackResponse = "";
 			result.setResponse(fallbackResponse);
 		}
 
