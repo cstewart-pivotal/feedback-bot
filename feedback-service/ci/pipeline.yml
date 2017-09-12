@@ -17,7 +17,7 @@ resources:
   type: git
   source:
     uri: {{GIT_REPO}}
-    branch: finished_product
+    branch: add_hystrix
     private_key: {{GIT_PRIVATE_KEY}}
 
 - name: deploy-app
