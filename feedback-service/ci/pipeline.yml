@@ -3,7 +3,7 @@ jobs:
   - name: deploy-feedback-bot
     plan:
     - get: git-repo
-      public: true
+      # public: true
       trigger: true
     - task: build-artifact
       file: git-repo/feedback-service/ci/tasks/build-artifact.yml
